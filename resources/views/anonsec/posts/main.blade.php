@@ -3,7 +3,13 @@
 @section('konten')
 <html>
 	<body>
-		<p> Hello World </p>
+		<div class="container" style="margin-top:10em;">
+		@php
+		echo "<pre>";
+			print_r($post->get());
+		echo "</pre>";
+		@endphp
+		</div> 
 	</body>
 </html>
 @endsection

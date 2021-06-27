@@ -7,8 +7,9 @@
 </head>
 <body>
 <div class="container">
-	<div class="col-md-8 offset-md mt-5">
-	<div class="card border-0 shadow">
+		<form method="POST" action="<?php echo e(route('newPost')); ?>" enctype="multipart/form-data">
+			<?php echo csrf_field(); ?>
+				<div class="card border-0 shadow">
 		<div class="card-body">
 			<div class="form-group">
 				<label for="title" class="font-weight-bold">
@@ -66,9 +67,21 @@ endif;
 unset($__errorArgs, $__bag); ?>
 			</div>
 
+			<div class="custom-file mt-3 mb-3">
+				<input type="file" class="custom-file-input" name="upload[]" multiple="multiple" required="true" id="customfile">
+				<label for="customfile" class="custom-file-label">
+					Choose File
+				</label>
+			</div>
+			<button type="submit" class="btn btn-outline-success">Success</button>
 		</div>
 	</div>
+		</form>
 </div>
 <script type="text/javascript" src="<?php echo e(mix('js/app.js')); ?>"></script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
 </body>
 </html><?php /**PATH C:\xampp\htdocs\laravel\AnonSec\resources\views/anonsec/posts/create.blade.php ENDPATH**/ ?>

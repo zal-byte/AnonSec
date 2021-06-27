@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AnonSec;
+use Session;
 class AnonSecController extends Controller
 {
     //
@@ -17,5 +18,36 @@ class AnonSecController extends Controller
 
     public function showNewFormPost(){
         return view('anonsec.posts.create');
+    }
+    public function newPost(Request $request){
+        $identifier = uniqid()."_".time();
+       if($request->upload != null ){
+        for($i = 0; $i < count($request->upload); $i++){
+            $image = $request->file('upload')[$i];
+            $filename = $image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $final_name = $filename . "_" . time() .$extension;
+
+            $image->storeAs('public/imgs',$final_name);
+        }
+
+                $anonsec = new AnonSec;
+                $anonsec->title = $request->title;
+                $anonsec->content = $request->content;
+                $anonsec->img_identifier = $identifier;
+                $anonsec->tag_identifier = $identifier;
+                $anonsec->nickname = \Auth::user()->nickname;
+                $anonsec->date = new \DateTime;
+
+                $simpan = $anonsec->save();
+
+                if($i == count($request->file('upload'))){
+                    Session::flash('success','Postingan berhasil di unggah.');
+                    return redirect()->route('home');
+                }else{
+                    Session::flash('errors',[''=>'Postingan gagal di unggah bosque']);
+                    return redirect()->route('home');
+                }
+       }
     }
 }

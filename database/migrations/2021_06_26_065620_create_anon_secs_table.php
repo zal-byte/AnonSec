@@ -20,7 +20,7 @@ class CreateAnonSecsTable extends Migration
             $table->text("content")->nullable();
             $table->date("date")->nullable();
             $table->text("img_identifier")->nullable();
-            $table->string("tag_identifier")->nullable();
+            $table->string("tag_identifier")->nullable();   
             $table->timestamps();
         });
     }
