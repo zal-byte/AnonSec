@@ -9,6 +9,6 @@ class AnonSec extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title','content','nickname','date','img_identifier','tag_identifier'
+        'title','content','nickname','date','tag_identifier'
     ];
 }

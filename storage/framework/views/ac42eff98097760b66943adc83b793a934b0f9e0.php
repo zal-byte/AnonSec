@@ -4,8 +4,10 @@
 <html>
 	<style>
 	.zoom:hover{
+		padding: 15px;
 		transition: scale(1.5);
 	}
+
 	</style>
 	<body>
 
@@ -20,8 +22,7 @@
 		<div class="row">
 			<div class="col-md">
 				<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-					<?php if( $anon->thumbnail != null ): ?>
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/img/thumbnail/') . $anon->thumbnail); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/ic/party.jpg')); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									<?php echo e($anon->title); ?>
@@ -35,9 +36,6 @@
 								</div>
 							</div>
 						</div>
-					<?php else: ?>
-
-					<?php endif; ?>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 				<div class="alert alert-danger mt-5">
 					Belum Ada Postingan

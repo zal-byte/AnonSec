@@ -4,8 +4,10 @@
 <html>
 	<style>
 	.zoom:hover{
+		padding: 15px;
 		transition: scale(1.5);
 	}
+
 	</style>
 	<body>
 
@@ -19,8 +21,7 @@
 		<div class="row">
 			<div class="col-md">
 				@forelse($posts as $anon)
-					@if( $anon->thumbnail != null )
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/img/thumbnail/') . $anon->thumbnail }});background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/ic/party.jpg') }});background-size:cover; background-repeat:no-repeat; backgound-position:center;">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									{{ $anon->title }}
@@ -33,9 +34,6 @@
 								</div>
 							</div>
 						</div>
-					@else
-
-					@endif
 				@empty
 				<div class="alert alert-danger mt-5">
 					Belum Ada Postingan

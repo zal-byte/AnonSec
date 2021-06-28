@@ -13,7 +13,7 @@ class AnonSecController extends Controller
         return view('anonsec.main');
     }
     public function posts(){
-        $anon = AnonSec::latest()->paginate(5);
+        $anon = AnonSec::latest()->paginate(6);
         return view('anonsec.posts.main',['posts'=>$anon]);
     }
 
@@ -40,18 +40,7 @@ class AnonSecController extends Controller
                 $anonsec = new AnonSec;
                 $anonsec->title = $request->title;
                 $anonsec->content = $request->content;
-                if($request->thumbnail != null){
-                    $thumb = $request->file('thumbnail');
-                    $filename = $thumb->getClientOriginalName();
-                    $extension = $thumb->getClientOriginalExtension();
-                    $final_name = $filename ."_thumb_". time() .".".$extension;
 
-                    if($thumb->storeAs('public/img/thumbnail', $final_name)){
-                        $anonsec->thumbnail = $final_name;
-                    }
-                }else{
-                    $anonsec->thumbnail = null;
-                }
                 $anonsec->tag_identifier = $identifier;
                 $anonsec->nickname = \Auth::user()->nickname;
                 $anonsec->date = new \DateTime;

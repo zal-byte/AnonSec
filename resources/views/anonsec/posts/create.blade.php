@@ -6,7 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-<div class="container">
+	<nav class="navbar navbar-expand-md bg-dark">
+		<a class="navbar-brand p-2" href="../">Kembali</a>
+	</nav>
+<div class="container mt-3">
 		<form method="POST" action="{{ route('newPost') }}" enctype="multipart/form-data">
 			@csrf
 				<div class="card border-0 shadow">
@@ -37,10 +40,6 @@
 				@enderror
 			</div>
 
-			<div class="custom-file mb-2 mt-2">
-				<input type="file" name="thumbnail" class="custom-file-input" id="thumbnail">
-				<label for="thumbnail" class="custom-file-label">Thumbnail</label>
-			</div>
 
 			<button type="submit" class="btn btn-outline-success">Posting</button>
 			<button type="reset" class="btn btn-outline-warning">Reset</button>
