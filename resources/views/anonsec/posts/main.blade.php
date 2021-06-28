@@ -10,24 +10,45 @@
 			{{ Session::get('success') }}
 		</div>
 		@endif
-		@forelse($posts as $anon)
-			<div class="card border-0 shadow mb-2 col-md-5">
-				<div class="card-body">
-					<h3 class="font-weight-bold">
-						{{ $anon->title }}
-					</h3>
-					<hr>
-					<p>
+
+		<div class="row">
+			<div class="col-md">
+				@forelse($posts as $anon)
+				<div class="card shadow border-0 mb-3">
+					<div class="card-body">
+						<h3 class="font-weight-bold"> {{ $anon->title }} </h3>
+						<hr>
 						{!! $anon->content !!}
-					</p>
+					</div>
+				</div>
+				@empty
+				<div class="alert alert-danger mt-5">
+					{{ Session::get('errors') }}
+				</div>
+				@endforelse
+    <div class="d-flex justify-content-center">
+            {!! $posts->links() !!}
+        </div>
+			</div>
+			<div class="col-md">
+				<div class="container-fluid">
+					<div class="card">
+						<div class="card-body">
+							<ul>
+								<li>
+									Category
+								</li>
+								<li>
+									Sub Category
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-		@empty
-			<div class="alert alert-danger mt-5">
-				<strong> Tidak ada postingan </strong>
-			</div>
-		@endforelse
+		</div>
 		</div> 
+
 	</body>
 </html>
 @endsection

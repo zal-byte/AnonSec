@@ -11,26 +11,48 @@
 
 		</div>
 		<?php endif; ?>
-		<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-			<div class="card border-0 shadow mb-2 col-md-5">
-				<div class="card-body">
-					<h3 class="font-weight-bold">
-						<?php echo e($anon->title); ?>
 
-					</h3>
-					<hr>
-					<p>
+		<div class="row">
+			<div class="col-md">
+				<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+				<div class="card shadow border-0 mb-3">
+					<div class="card-body">
+						<h3 class="font-weight-bold"> <?php echo e($anon->title); ?> </h3>
+						<hr>
 						<?php echo $anon->content; ?>
 
-					</p>
+					</div>
+				</div>
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+				<div class="alert alert-danger mt-5">
+					<?php echo e(Session::get('errors')); ?>
+
+				</div>
+				<?php endif; ?>
+    <div class="d-flex justify-content-center">
+            <?php echo $posts->links(); ?>
+
+        </div>
+			</div>
+			<div class="col-md">
+				<div class="container-fluid">
+					<div class="card">
+						<div class="card-body">
+							<ul>
+								<li>
+									Category
+								</li>
+								<li>
+									Sub Category
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-			<div class="alert alert-danger mt-5">
-				<strong> Tidak ada postingan </strong>
-			</div>
-		<?php endif; ?>
+		</div>
 		</div> 
+
 	</body>
 </html>
 <?php $__env->stopSection(); ?>

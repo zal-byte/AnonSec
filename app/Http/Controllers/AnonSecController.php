@@ -12,7 +12,7 @@ class AnonSecController extends Controller
         return view('anonsec.main');
     }
     public function posts(){
-        $anon = AnonSec::latest()->get();
+        $anon = AnonSec::latest()->paginate(5);
         return view('anonsec.posts.main',['posts'=>$anon]);
     }
 
