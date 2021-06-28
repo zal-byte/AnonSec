@@ -13,6 +13,9 @@
 	<a class="navbar-brand p-3 text-white" onclick="window.location.href = 'anonsec/home';">Kembali</a>
 	@endguest
 </nav>
+<div>
+	@yield('konten')
+</div>
 <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

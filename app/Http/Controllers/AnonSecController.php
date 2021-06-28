@@ -12,8 +12,8 @@ class AnonSecController extends Controller
         return view('anonsec.main');
     }
     public function posts(){
-        $anon = AnonSec::latest();
-        return view('anonsec.posts.main',['post'=>$anon]);
+        $anon = AnonSec::latest()->get();
+        return view('anonsec.posts.main',['posts'=>$anon]);
     }
 
     public function showNewFormPost(){
@@ -22,6 +22,7 @@ class AnonSecController extends Controller
     public function newPost(Request $request){
         $identifier = uniqid()."_".time();
        if($request->upload != null ){
+        $num = 0;
         for($i = 0; $i < count($request->upload); $i++){
             $image = $request->file('upload')[$i];
             $filename = $image->getClientOriginalName();
@@ -29,6 +30,7 @@ class AnonSecController extends Controller
             $final_name = $filename . "_" . time() .$extension;
 
             $image->storeAs('public/imgs',$final_name);
+            $num = $num + 1;
         }
 
                 $anonsec = new AnonSec;
@@ -41,9 +43,9 @@ class AnonSecController extends Controller
 
                 $simpan = $anonsec->save();
 
-                if($i == count($request->file('upload'))){
+                if($num == count($request->file('upload'))){
                     Session::flash('success','Postingan berhasil di unggah.');
-                    return redirect()->route('home');
+                    return redirect()->route('posts');
                 }else{
                     Session::flash('errors',[''=>'Postingan gagal di unggah bosque']);
                     return redirect()->route('home');
