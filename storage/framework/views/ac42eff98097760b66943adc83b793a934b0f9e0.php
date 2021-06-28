@@ -25,8 +25,7 @@
 				</div>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 				<div class="alert alert-danger mt-5">
-					<?php echo e(Session::get('errors')); ?>
-
+					Belum Ada Postingan
 				</div>
 				<?php endif; ?>
     <div class="d-flex justify-content-center">

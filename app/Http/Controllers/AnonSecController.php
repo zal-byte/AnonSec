@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AnonSec;
 use Session;
+use Validator;
 class AnonSecController extends Controller
 {
     //
@@ -21,35 +22,34 @@ class AnonSecController extends Controller
     }
     public function newPost(Request $request){
         $identifier = uniqid()."_".time();
-       if($request->upload != null ){
-        $num = 0;
-        for($i = 0; $i < count($request->upload); $i++){
-            $image = $request->file('upload')[$i];
-            $filename = $image->getClientOriginalName();
-            $extension = $image->getClientOriginalExtension();
-            $final_name = $filename . "_" . time() .$extension;
+        $rules = [
+            'title'=>'required|string',
+            'content'=>'required',
+        ];
 
-            $image->storeAs('public/imgs',$final_name);
-            $num = $num + 1;
+        $response = [
+            'title.required'=>'Isi judulnya dong sayang.',
+            'content.required'=>'Mana konten nya'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $response);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-
                 $anonsec = new AnonSec;
                 $anonsec->title = $request->title;
                 $anonsec->content = $request->content;
-                $anonsec->img_identifier = $identifier;
                 $anonsec->tag_identifier = $identifier;
                 $anonsec->nickname = \Auth::user()->nickname;
                 $anonsec->date = new \DateTime;
 
                 $simpan = $anonsec->save();
-
-                if($num == count($request->file('upload'))){
-                    Session::flash('success','Postingan berhasil di unggah.');
+                if($simpan){
+                    Session::flash('success', 'Postingan berhasil diunggah.');
                     return redirect()->route('posts');
                 }else{
-                    Session::flash('errors',[''=>'Postingan gagal di unggah bosque']);
-                    return redirect()->route('home');
+                    Session::flash('errors',[''=>'Postingan gagal di unggah.']);
                 }
-       }
     }
 }

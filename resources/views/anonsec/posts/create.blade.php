@@ -37,13 +37,8 @@
 				@enderror
 			</div>
 
-			<div class="custom-file mt-3 mb-3">
-				<input type="file" class="custom-file-input" name="upload[]" multiple="multiple" required="true" id="customfile">
-				<label for="customfile" class="custom-file-label">
-					Choose File
-				</label>
-			</div>
-			<button type="submit" class="btn btn-outline-success">Success</button>
+			<button type="submit" class="btn btn-outline-success">Posting</button>
+			<button type="reset" class="btn btn-outline-warning">Reset</button>
 		</div>
 	</div>
 		</form>

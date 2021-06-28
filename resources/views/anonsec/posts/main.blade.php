@@ -23,7 +23,7 @@
 				</div>
 				@empty
 				<div class="alert alert-danger mt-5">
-					{{ Session::get('errors') }}
+					Belum Ada Postingan
 				</div>
 				@endforelse
     <div class="d-flex justify-content-center">
