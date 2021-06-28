@@ -2,6 +2,11 @@
 
 <?php $__env->startSection('konten'); ?>
 <html>
+	<style>
+	.zoom:hover{
+		transition: scale(1.5);
+	}
+	</style>
 	<body>
 
 		<div class="container" style="margin-top:10em;">
@@ -15,14 +20,24 @@
 		<div class="row">
 			<div class="col-md">
 				<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-				<div class="card shadow border-0 mb-3">
-					<div class="card-body">
-						<h3 class="font-weight-bold"> <?php echo e($anon->title); ?> </h3>
-						<hr>
-						<?php echo $anon->content; ?>
+					<?php if( $anon->thumbnail != null ): ?>
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/img/thumbnail/') . $anon->thumbnail); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+							<div class="card-body">
+								<h2 class="font-weight-bold text-white">
+									<?php echo e($anon->title); ?>
 
-					</div>
-				</div>
+								</h2>
+								<hr class="text-white">
+								<div class="form-inline">
+									<span class="text-white"> <?php echo e($anon->date); ?></span>
+									<span class="text-white"> | </span>
+									<span class="text-white"> <?php echo e($anon->nickname); ?> </span>
+								</div>
+							</div>
+						</div>
+					<?php else: ?>
+
+					<?php endif; ?>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 				<div class="alert alert-danger mt-5">
 					Belum Ada Postingan

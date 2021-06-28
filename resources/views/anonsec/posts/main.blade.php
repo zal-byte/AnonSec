@@ -2,6 +2,11 @@
 
 @section('konten')
 <html>
+	<style>
+	.zoom:hover{
+		transition: scale(1.5);
+	}
+	</style>
 	<body>
 
 		<div class="container" style="margin-top:10em;">
@@ -14,13 +19,23 @@
 		<div class="row">
 			<div class="col-md">
 				@forelse($posts as $anon)
-				<div class="card shadow border-0 mb-3">
-					<div class="card-body">
-						<h3 class="font-weight-bold"> {{ $anon->title }} </h3>
-						<hr>
-						{!! $anon->content !!}
-					</div>
-				</div>
+					@if( $anon->thumbnail != null )
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/img/thumbnail/') . $anon->thumbnail }});background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+							<div class="card-body">
+								<h2 class="font-weight-bold text-white">
+									{{ $anon->title }}
+								</h2>
+								<hr class="text-white">
+								<div class="form-inline">
+									<span class="text-white"> {{ $anon->date }}</span>
+									<span class="text-white"> | </span>
+									<span class="text-white"> {{ $anon->nickname }} </span>
+								</div>
+							</div>
+						</div>
+					@else
+
+					@endif
 				@empty
 				<div class="alert alert-danger mt-5">
 					Belum Ada Postingan

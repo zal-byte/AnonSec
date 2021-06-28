@@ -28,13 +28,18 @@
 				<label for="content" class="font-weight-bold">
 					Isi
 				</label>
-				<textarea id="content" class="form-control @error('content') is-invalid @enderror" name="content" placeholder="Isi Konten" rows="5"></textarea>
+				<textarea id="content" class="form-control @error('content') is-invalid @enderror" name="content" placeholder="Isi Konten" rows="9"></textarea>
 
 				@error('content')
 				<div class="alert alert-danger mt-5">
 					{{ $message }}
 				</div>
 				@enderror
+			</div>
+
+			<div class="custom-file mb-2 mt-2">
+				<input type="file" name="thumbnail" class="custom-file-input" id="thumbnail">
+				<label for="thumbnail" class="custom-file-label">Thumbnail</label>
 			</div>
 
 			<button type="submit" class="btn btn-outline-success">Posting</button>

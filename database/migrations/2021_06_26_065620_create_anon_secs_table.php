@@ -18,6 +18,7 @@ class CreateAnonSecsTable extends Migration
             $table->string("nickname")->nullable();
             $table->string("title")->nullable();
             $table->text("content")->nullable();
+            $table->text('thumbnail')->nullable();
             $table->date("date")->nullable();
             $table->string("tag_identifier")->nullable();   
             $table->timestamps();
