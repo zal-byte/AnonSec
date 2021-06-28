@@ -50,15 +50,16 @@
 				<div class="container-fluid">
 					<div class="card">
 						<div class="card-body">
-							<ul>
-								<li>
-									Category
-								</li>
-								<li>
-									Sub Category
-								</li>
-							</ul>
-						</div>
+							<strong> Label </strong>
+							<hr>
+							<!-- disini tag label -->
+							<?php $__empty_1 = true; $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+ 								<button type="button" class="btn btn-primary m-1"><?php echo e($tag->value); ?><span class="badge"><?php echo e($tag->count); ?></span></button> 
+ 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+
+							<?php endif; ?>
+							<!-- End of tag label -->
+						</div>	
 					</div>
 				</div>
 			</div>

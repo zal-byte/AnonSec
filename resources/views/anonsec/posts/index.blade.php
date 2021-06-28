@@ -9,6 +9,14 @@
 <nav class="navbar navbar-expand-md bg-dark fixed-top">
 	@guest
 		<a class="navbar-brand p-3 text-white">AnonSec</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<div class="form-inline">
+					<a href="{{ route('login') }}" class="btn btn-outline-success"> Login </a>
+					<a href="{{ route('register') }}" class="btn btn-outline-info"> Register </a>
+				</div>
+			</li>
+		</ul>
 	@else
 	<a class="navbar-brand p-3 text-white" onclick="window.location.href = 'anonsec/home';">Kembali</a>
 	@endguest

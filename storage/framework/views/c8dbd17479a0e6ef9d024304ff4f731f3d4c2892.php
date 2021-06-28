@@ -9,6 +9,14 @@
 <nav class="navbar navbar-expand-md bg-dark fixed-top">
 	<?php if(auth()->guard()->guest()): ?>
 		<a class="navbar-brand p-3 text-white">AnonSec</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<div class="form-inline">
+					<a href="<?php echo e(route('login')); ?>" class="btn btn-outline-success"> Login </a>
+					<a href="<?php echo e(route('register')); ?>" class="btn btn-outline-info"> Register </a>
+				</div>
+			</li>
+		</ul>
 	<?php else: ?>
 	<a class="navbar-brand p-3 text-white" onclick="window.location.href = 'anonsec/home';">Kembali</a>
 	<?php endif; ?>

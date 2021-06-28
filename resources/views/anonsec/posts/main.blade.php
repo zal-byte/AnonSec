@@ -47,15 +47,16 @@
 				<div class="container-fluid">
 					<div class="card">
 						<div class="card-body">
-							<ul>
-								<li>
-									Category
-								</li>
-								<li>
-									Sub Category
-								</li>
-							</ul>
-						</div>
+							<strong> Label </strong>
+							<hr>
+							<!-- disini tag label -->
+							@forelse($tags as $tag)
+ 								<button type="button" class="btn btn-primary m-1">{{ $tag->value }}<span class="badge">{{ $tag->count }}</span></button> 
+ 							@empty
+
+							@endforelse
+							<!-- End of tag label -->
+						</div>	
 					</div>
 				</div>
 			</div>

@@ -8,15 +8,16 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark fixed-top p-2">
+		<div class="form-inline">
+			<img src="<?php echo e(Storage::url('public/ic/icon.png')); ?>" style="height:5em;">
 		<a class="navbar-brand">AnonSec Team</a>
+
+		</div>
 		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="mainNav">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link active">Main</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo e(route('logout')); ?>">
+					<a class="nav-link btn btn-outline-warning" href="<?php echo e(route('logout')); ?>">
 						Logout
 					</a>
 				</li>

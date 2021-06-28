@@ -1,8 +1,8 @@
 .cards{
-	background: linear-gradient(150deg, lightblue, darkblue);
+	background: linear-gradient(150deg, #ff00, #f5f5f5);
 	margin-top: 5px;
 }
 .cards:hover{
-	background: linear-gradient(150deg, darkblue, lightblue);
-	color: white;
+	background: linear-gradient(150deg, #f5f5f5, #ff00);
+	color: black;
 }

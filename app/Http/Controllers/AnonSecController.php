@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AnonSec;
+use App\Models\Tags;
 use Session;
 use Validator;
 class AnonSecController extends Controller
@@ -14,7 +15,8 @@ class AnonSecController extends Controller
     }
     public function posts(){
         $anon = AnonSec::latest()->paginate(6);
-        return view('anonsec.posts.main',['posts'=>$anon]);
+        $tags = \DB::table('tag')->get();
+        return view('anonsec.posts.main',['posts'=>$anon,'tags'=>$tags]);
     }
 
     public function showNewFormPost(){
