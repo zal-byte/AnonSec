@@ -6,6 +6,7 @@
 	.zoom:hover{
 		padding: 15px;
 		transition: scale(1.5);
+		cursor: pointer;
 	}
 
 	</style>
@@ -22,7 +23,7 @@
 		<div class="row">
 			<div class="col-md">
 				<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/ic/party.jpg')); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/ic/party.jpg')); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href=<?php echo e(Route('view', $anon->id)); ?>">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									<?php echo e($anon->title); ?>
@@ -56,7 +57,7 @@
 							<?php $__empty_1 = true; $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
  								<button type="button" class="btn btn-primary m-1"><?php echo e($tag->value); ?><span class="badge"><?php echo e($tag->count); ?></span></button> 
  							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-
+ 								<span class="font-weight-bold"> Belum Ada Label </span>
 							<?php endif; ?>
 							<!-- End of tag label -->
 						</div>	

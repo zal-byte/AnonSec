@@ -18,6 +18,9 @@ class AnonSecController extends Controller
         $tags = \DB::table('tag')->get();
         return view('anonsec.posts.main',['posts'=>$anon,'tags'=>$tags]);
     }
+    public function view(AnonSec $anon){
+        
+    }
 
     public function showNewFormPost(){
         return view('anonsec.posts.create');

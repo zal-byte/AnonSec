@@ -6,6 +6,7 @@
 	.zoom:hover{
 		padding: 15px;
 		transition: scale(1.5);
+		cursor: pointer;
 	}
 
 	</style>
@@ -21,7 +22,7 @@
 		<div class="row">
 			<div class="col-md">
 				@forelse($posts as $anon)
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/ic/party.jpg') }});background-size:cover; background-repeat:no-repeat; backgound-position:center;">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/ic/party.jpg') }});background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href={{ Route('view', $anon->id) }}">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									{{ $anon->title }}
@@ -53,7 +54,7 @@
 							@forelse($tags as $tag)
  								<button type="button" class="btn btn-primary m-1">{{ $tag->value }}<span class="badge">{{ $tag->count }}</span></button> 
  							@empty
-
+ 								<span class="font-weight-bold"> Belum Ada Label </span>
 							@endforelse
 							<!-- End of tag label -->
 						</div>	
