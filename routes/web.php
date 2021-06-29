@@ -23,7 +23,7 @@ Route::get('/register', [AuthController::class,'showFormRegister'])->name('regis
 Route::post('register', [AuthController::class, 'register']);
 Route::post("login", [AuthController::class, 'login']);
 Route::get('/posts', [AnonSecController::class,'posts'])->name('posts');
-Route::get('/views/{id}', [AnonSecController::class,'view'])->name('view');
+Route::get('/posts/{id}', [AnonSecController::class,'view'])->name('view');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/create', [AnonSecController::class,'showNewFormPost'])->name('create');

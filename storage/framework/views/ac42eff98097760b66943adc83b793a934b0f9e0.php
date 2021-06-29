@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="col-md">
 				<?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/ic/party.jpg')); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href=<?php echo e(Route('view', $anon->id)); ?>">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url(<?php echo e(Storage::url('public/ic/party.jpg')); ?>);background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href = 'posts/<?php echo e($anon->id); ?>';">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									<?php echo e($anon->title); ?>

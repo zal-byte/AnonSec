@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-md">
 				@forelse($posts as $anon)
-						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/ic/party.jpg') }});background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href={{ Route('view', $anon->id) }}">
+						<div class="card shadow border-0 mb-2 zoom" style="background-image:url({{ Storage::url('public/ic/party.jpg') }});background-size:cover; background-repeat:no-repeat; backgound-position:center;" onclick="window.location.href = 'posts/{{$anon->id}}';">
 							<div class="card-body">
 								<h2 class="font-weight-bold text-white">
 									{{ $anon->title }}

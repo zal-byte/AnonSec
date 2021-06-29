@@ -19,8 +19,9 @@ class AnonSecController extends Controller
         return view('anonsec.posts.main',['posts'=>$anon,'tags'=>$tags]);
     }
     public function view(AnonSec $anon){
-        
-    }
+        $anon = \DB::table('anon_secs')->where('id', $anon->id)->get();
+        return view('anonsec.posts.view', ['anon'=>$anon]);
+    } 
 
     public function showNewFormPost(){
         return view('anonsec.posts.create');
