@@ -2,6 +2,13 @@
 
 <?php $__env->startSection('konten'); ?>
 <html>
+	<script type="text/javascript">
+		
+		function tags(value){
+			window.location.href = 'posts/tags/'+value;
+		}
+
+	</script>
 	<style>
 	.zoom:hover{
 		padding: 15px;
@@ -42,10 +49,7 @@
 					Belum Ada Postingan
 				</div>
 				<?php endif; ?>
-    <div class="d-flex justify-content-center">
-            <?php echo $posts->links(); ?>
-
-        </div>
+				
 			</div>
 			<div class="col-md">
 				<div class="container-fluid">
@@ -55,7 +59,7 @@
 							<hr>
 							<!-- disini tag label -->
 							<?php $__empty_1 = true; $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
- 								<button type="button" class="btn btn-primary m-1"><?php echo e($tag->value); ?><span class="badge"><?php echo e($tag->count); ?></span></button> 
+ 								<a href="<?php echo e(route('tags',$tag->tag_identifier)); ?>"><button type="button" class="btn btn-primary m-1"><?php echo e($tag->value); ?><span class="badge"><?php echo e($tag->count); ?></span></button></a>
  							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
  								<span class="font-weight-bold"> Belum Ada Label </span>
 							<?php endif; ?>

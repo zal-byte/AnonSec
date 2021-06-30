@@ -23,10 +23,19 @@ class AnonSecController extends Controller
         return view('anonsec.posts.view', ['anon'=>$anon]);
     } 
 
+    public function tags(AnonSec $tags){
+        $post = \DB::table('anon_secs')->where('tag_identifier', $tags->tag_identifier)->get();
+        $tags = \DB::table('tag')->get();
+        return view('anonsec.posts.main',['posts'=>$post,'tags'=>$tags]);
+    }
+
     public function showNewFormPost(){
         return view('anonsec.posts.create');
     }
     public function newPost(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());
+        // echo "</pre>";
         $identifier = uniqid()."_".time();
         $rules = [
             'title'=>'required|string',

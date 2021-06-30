@@ -2,6 +2,13 @@
 
 @section('konten')
 <html>
+	<script type="text/javascript">
+		
+		function tags(value){
+			window.location.href = 'posts/tags/'+value;
+		}
+
+	</script>
 	<style>
 	.zoom:hover{
 		padding: 15px;
@@ -40,9 +47,7 @@
 					Belum Ada Postingan
 				</div>
 				@endforelse
-    <div class="d-flex justify-content-center">
-            {!! $posts->links() !!}
-        </div>
+				
 			</div>
 			<div class="col-md">
 				<div class="container-fluid">
@@ -52,7 +57,7 @@
 							<hr>
 							<!-- disini tag label -->
 							@forelse($tags as $tag)
- 								<button type="button" class="btn btn-primary m-1">{{ $tag->value }}<span class="badge">{{ $tag->count }}</span></button> 
+ 								<a href="{{ route('tags',$tag->tag_identifier) }}"><button type="button" class="btn btn-primary m-1">{{ $tag->value }}<span class="badge">{{ $tag->count }}</span></button></a>
  							@empty
  								<span class="font-weight-bold"> Belum Ada Label </span>
 							@endforelse

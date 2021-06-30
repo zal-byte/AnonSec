@@ -24,6 +24,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post("login", [AuthController::class, 'login']);
 Route::get('/posts', [AnonSecController::class,'posts'])->name('posts');
 Route::get('/posts/{id}', [AnonSecController::class,'view'])->name('view');
+Route::get('/posts/tags/{value}',[AnonSecController::class,'tags'])->name('tags');
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/create', [AnonSecController::class,'showNewFormPost'])->name('create');

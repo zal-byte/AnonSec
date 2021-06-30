@@ -3,7 +3,7 @@
 @section("konten")
 <html>
 	<body>
-		<div class="container" style="margin-top:7em;">
+		<div class="container col-md-5" style="margin-top:7em;">
 			<center>
 			<img src=" {{ Storage::url('public/ic/icon.png') }}" style="height:25em;">
 			</center>
